@@ -1,11 +1,11 @@
 
-
+import Header from '../components/Header/index'
 
 function App() {
-  return <>
+  return <div className="container">
 
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus iste consequuntur alias eos, sunt maxime ullam. Voluptatibus, aliquid. Nihil ab dolorum a ratione unde vero praesentium nobis neque debitis blanditiis.
-  </>;
+    <Header/>
+  </div>;
 }
 
 export default App;

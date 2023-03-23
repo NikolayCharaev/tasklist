@@ -3,10 +3,18 @@
 body {
   font-family: 'Comfortaa', cursive;
 
-    color: #fff;
-    line-height: 1.2;
-    font-size: 17px;
+  color: #000;
+  line-height: 1.2;
+  font-size: 17px;
+}
 
-  background: -webkit-linear-gradient(90deg, #250f2b, #070112);
-  background: linear-gradient(90deg, #250f2b, #070112);
+.container {
+  width: 1400px;
+  height: 80vh;
+  -webkit-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
+  padding: 0 20px;
+  margin: 0 auto ;
+  margin-top: 100px;
 }

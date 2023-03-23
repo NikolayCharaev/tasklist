@@ -1,0 +1,31 @@
+.header {
+    padding: 40px 0px;
+  &Content {
+    display: flex;
+    justify-content: space-between;
+
+
+    font-size: 30px;
+  }
+
+  &Logo{ 
+        padding: 10px;
+        border: 1px solid #000;
+        border-radius: 5px;
+        cursor: pointer;
+  }
+
+
+  &AddTodo{ 
+    cursor: pointer;
+    transition: all .2s ease;
+
+
+
+    &:hover{ 
+        color: rgb(85, 81, 81);
+        transform: rotate(-40deg);
+    }
+    
+  }
+}
