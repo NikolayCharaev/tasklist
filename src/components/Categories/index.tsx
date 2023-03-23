@@ -2,31 +2,23 @@ import React from 'react';
 
 import cat from '../images/cat.png';
 
+import { categoriesItems } from './data';
 import styles from './index.module.scss';
 const Categories = () => {
   return (
     <>
       <div className={styles.categories}>
         <ul className={styles.categoriesList}>
-          <li className={styles.categoriesItem}>
-            <span className={`${styles.categoriesEllipse} ${styles.work}`}></span>
-            <p className={styles.categoriesItemTitle}>работа</p>
-          </li>
-
-          <li className={styles.categoriesItem}>
-            <span className={`${styles.categoriesEllipse} ${styles.studies}`}></span>
-            <p className={styles.categoriesItemTitle}>учеба</p>
-          </li>
-
-          <li className={styles.categoriesItem}>
-            <span className={`${styles.categoriesEllipse} ${styles.shop}`}></span>
-            <p className={styles.categoriesItemTitle}>покупки</p>
-          </li>
-
-          <li className={styles.categoriesItem}>
-            <span className={`${styles.categoriesEllipse} ${styles.sport}`}></span>
-            <p className={styles.categoriesItemTitle}>спорт</p>
-          </li>
+          {categoriesItems.map((item, index) => {
+            const { title, categories, id, ellipseColor } = item;
+            return (
+              <li className={styles.categoriesItem} key={id} onClick={() => { 
+              }}>
+                <span className={`${styles.categoriesEllipse} ${styles[ellipseColor]}`}></span>
+                <p className={styles.categoriesItemTitle}>{title}</p>
+              </li>
+            );
+          })}
         </ul>
       </div>
       <img src={cat} alt="cat" className={styles.categoriesCat} />
