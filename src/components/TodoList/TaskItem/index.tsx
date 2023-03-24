@@ -14,7 +14,7 @@ interface TaskItemProps {
 const TaskItem:FC<TaskItemProps> = ({elem}) => {
   return (
     <li className={styles.todo}>
-        <p className={styles.TodoTitle}>{elem.title}</p>
+        <p className={styles.todoTitle}>{elem.title}</p>
     </li>
   )
 }

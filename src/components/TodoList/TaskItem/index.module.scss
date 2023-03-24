@@ -7,5 +7,15 @@
     height: 150px;
     background-color: #fff9de;
     border-radius: 10px;
+    position: relative;
+
+
+    &Title { 
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        text-align: center;
+    }
 
 }

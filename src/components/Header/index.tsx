@@ -6,7 +6,6 @@ import { BsPlusCircle } from 'react-icons/bs';
 import { useTodoStore } from '../../store/store';
 
 const index = () => {
-//   const [modalVisible, setModalVisible] = useState(false);
 
   const {setModalVisible} = useTodoStore()
   return (
