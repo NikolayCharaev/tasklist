@@ -7,7 +7,14 @@
     gap: 20px;
     margin-bottom: 30px;
     cursor: pointer;
+    max-width: 180px;
 
+
+    &:hover { 
+        .categoriesEllipse{ 
+            opacity: 1;
+        }
+    }
 
   }
 
@@ -16,6 +23,8 @@
     height: 60px;
     opacity: 0.4;
     border-radius: 50%;
+    transition: all .2s ease;
+
   }
 
   .work {
