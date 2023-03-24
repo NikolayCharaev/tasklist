@@ -1,6 +1,6 @@
 import Categories from '../components/Categories';
 import Header from '../components/Header/index';
-import TodoList from '../components/TodoList';
+import TodoList from '../components/TodoList/TaskList';
 
 import styles from './index.module.scss'
 
