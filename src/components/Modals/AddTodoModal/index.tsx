@@ -7,8 +7,8 @@ import { useTodoStore } from '../../../store/store';
 
 const index: React.FC = () => {
   const { modalVisible, setModalVisible } = useTodoStore();
-
-  console.log(modalVisible);
+  const { createTask } = useTodoStore();
+  const [value, setValue] = useState('');
 
   return (
     <>
@@ -16,17 +16,21 @@ const index: React.FC = () => {
         <section className={styles.todoModal}>
           <div className={styles.todoModalTop}>
             <h4 className={styles.todoModalTitle}>Добавить новое дело</h4>
-            <AiOutlineClose className={styles.todoModalClose} onClick={setModalVisible}/>
+            <AiOutlineClose className={styles.todoModalClose} onClick={setModalVisible} />
           </div>
           <div className={styles.todoModalForm}>
             <input
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
               type="text"
               placeholder="введите название дела..."
               className={styles.todoModalInput}
             />
-            <button className={styles.todoModalButton} >
-              добавить
-            </button>
+            <button className={styles.todoModalButton} onClick={() => {
+                createTask(value)
+                setValue('')
+                setModalVisible(false)
+                }}>добавить</button>
           </div>
         </section>
       )}
