@@ -1,4 +1,4 @@
-import React, { useState, FC, useEffect } from 'react';
+import React, { useState, FC, useEffect, useRef } from 'react';
 import styles from './index.module.scss';
 
 import { AiOutlineClose } from 'react-icons/ai';
@@ -10,12 +10,19 @@ const index: React.FC = () => {
   const { createTask } = useTodoStore();
   const [value, setValue] = useState('');
 
-  function addTodoHandler(value: string ) {
+  function addTodoHandler(value: string) {
     createTask(value);
     setValue('');
     setModalVisible();
   }
 
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => { 
+    if (modalVisible) { 
+        inputRef.current?.focus()
+    }
+  },[modalVisible])
   return (
     <>
       {modalVisible && (
@@ -26,6 +33,7 @@ const index: React.FC = () => {
           </div>
           <div className={styles.todoModalForm}>
             <input
+                ref={inputRef}
               value={value}
               onChange={(e) => setValue(e.target.value)}
               type="text"
@@ -38,6 +46,7 @@ const index: React.FC = () => {
               }}
             />
             <button
+            disabled={!value.length}
               className={styles.todoModalButton}
               onClick={() => {
                 addTodoHandler(value);
