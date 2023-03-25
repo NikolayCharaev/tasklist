@@ -54,12 +54,15 @@ const index: React.FC = () => {
               }}>
               добавить
             </button>
-            <div className={styles.todoEllipsis}>
+            {/* <div className={styles.todoEllipsis}>
                 <h5 className={styles.todoEllipsisTitle}>Выберите категорию задачи</h5>
                 <div className={styles.todoEllipsisList}>
                   <p className={styles.todoEllipsisButton}>click</p>
+                  <p className={styles.todoEllipsisButton}>click</p>
+                  <p className={styles.todoEllipsisButton}>click</p>
+                  <p className={styles.todoEllipsisButton}>click</p>
                 </div>
-            </div>
+            </div> */}
           </div>
         </section>
       )}
