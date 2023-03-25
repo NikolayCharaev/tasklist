@@ -22,7 +22,7 @@
 
 
     &Title { 
-        
+        width: 100%; 
 
     }
 
@@ -47,7 +47,13 @@
         flex-direction: column;
         gap: 4px;
         max-width: 100px;
-        float: right;
+        // float: right;
+
+        position: absolute;
+        top: 20px;
+        right: 40px;
+
+
 
         button { 
             background: rgb(0, 229, 255);

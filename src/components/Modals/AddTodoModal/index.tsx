@@ -18,22 +18,23 @@ const index: React.FC = () => {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => { 
-    if (modalVisible) { 
-        inputRef.current?.focus()
+  useEffect(() => {
+    if (modalVisible) {
+      inputRef.current?.focus();
     }
-  },[modalVisible])
+  }, [modalVisible]);
   return (
     <>
       {modalVisible && (
         <section className={styles.todoModal}>
+          <div className={styles.todoModalBackground}></div>
           <div className={styles.todoModalTop}>
             <h4 className={styles.todoModalTitle}>Добавить новое дело</h4>
             <AiOutlineClose className={styles.todoModalClose} onClick={setModalVisible} />
           </div>
           <div className={styles.todoModalForm}>
             <input
-                ref={inputRef}
+              ref={inputRef}
               value={value}
               onChange={(e) => setValue(e.target.value)}
               type="text"
@@ -46,15 +47,20 @@ const index: React.FC = () => {
               }}
             />
             <button
-            disabled={!value.length}
+              disabled={!value.length}
               className={styles.todoModalButton}
               onClick={() => {
                 addTodoHandler(value);
               }}>
               добавить
             </button>
+            <div className={styles.todoEllipsis}>
+                <h5 className={styles.todoEllipsisTitle}>Выберите категорию задачи</h5>
+                <div className={styles.todoEllipsisList}>
+                  <p className={styles.todoEllipsisButton}>click</p>
+                </div>
+            </div>
           </div>
-         
         </section>
       )}
     </>
