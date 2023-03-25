@@ -9,30 +9,31 @@
     border-radius: 10px;
     position: relative;
     transition: all .2s ease;
+    padding: 20px;
     cursor: pointer;
 
     &:hover{ 
         box-shadow: 2px 2px 8px rgba(0, 0, 0, .11);
     }
 
+    &Top{ 
+        margin-bottom: 40px;
+    }
+
 
     &Title { 
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        text-align: center;
+        
+
     }
 
     span{
         display: inline-block;
-        margin: 10px 10px;
     }
 
     &Ellipsis { 
         color: grey;
         float: right;
-        margin: 10px 10px 0 0;
+        // margin: 10px 10px 0 0;
         transition: all .2s ease;
 
 

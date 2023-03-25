@@ -54,6 +54,7 @@ const index: React.FC = () => {
               добавить
             </button>
           </div>
+         
         </section>
       )}
     </>

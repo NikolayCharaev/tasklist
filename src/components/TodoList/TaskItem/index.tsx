@@ -15,26 +15,31 @@ interface TaskItemProps {
 }
 
 const TaskItem: FC<TaskItemProps> = ({ elem }) => {
-  const date = dayjs(elem.createdAt)
-  const formatDate = date.locale('ru').format('DD.MM.YY HH:mm')
-    const {removeTask} = useTodoStore()
+  const date = dayjs(elem.createdAt);
+  const formatDate = date.locale('ru').format('DD.MM.YY HH:mm');
+  const { removeTask } = useTodoStore();
   const [buttonsVisible, setButtonsVisible] = useState(false);
   return (
     <li className={styles.todo}>
-      <span className={styles.todoDate}>{formatDate}</span>
+      <div className={styles.todoTop}>
+        <span className={styles.todoDate}>{formatDate}</span>
+        <FaEllipsisV
+          className={styles.todoEllipsis}
+          onClick={() => {
+            setButtonsVisible(!buttonsVisible);
+          }}
+        />
+      </div>
       <p className={styles.todoTitle}>{elem.title}</p>
 
-      <FaEllipsisV
-        className={styles.todoEllipsis}
-        onClick={() => {
-          setButtonsVisible(!buttonsVisible);
-        }}
-      />
       {buttonsVisible && (
         <div className={styles.todoButtons}>
-          <button onClick={() => { 
-            removeTask(elem.id)
-          }}>удалить</button>
+          <button
+            onClick={() => {
+              removeTask(elem.id);
+            }}>
+            удалить
+          </button>
           <button>изменить</button>
         </div>
       )}

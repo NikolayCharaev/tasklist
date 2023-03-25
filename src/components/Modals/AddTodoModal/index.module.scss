@@ -27,10 +27,11 @@
   }
 
   &Form {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    margin-top: 100px;
 
     min-width: 90%;
 
