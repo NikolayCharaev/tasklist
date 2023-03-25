@@ -17,8 +17,10 @@ interface TaskItemProps {
 const TaskItem: FC<TaskItemProps> = ({ elem }) => {
   const date = dayjs(elem.createdAt);
   const formatDate = date.locale('ru').format('DD.MM.YY HH:mm');
-  const { removeTask } = useTodoStore();
+  const { removeTask, toEdited, setToEdit, updateTask } = useTodoStore();
+
   const [buttonsVisible, setButtonsVisible] = useState(false);
+  const [editValue, setEditValue] = useState(elem.title);
   return (
     <li className={styles.todo}>
       <div className={styles.todoTop}>
@@ -30,7 +32,16 @@ const TaskItem: FC<TaskItemProps> = ({ elem }) => {
           }}
         />
       </div>
-      <p className={styles.todoTitle}>{elem.title}</p>
+      {toEdited ? (
+        <input
+          value={editValue}
+          onChange={(e) => {
+            setEditValue(e.target.value);
+          }}
+        />
+      ) : (
+        <p className={styles.todoTitle}>{elem.title}</p>
+      )}
 
       {buttonsVisible && (
         <div className={styles.todoButtons}>
@@ -40,7 +51,13 @@ const TaskItem: FC<TaskItemProps> = ({ elem }) => {
             }}>
             удалить
           </button>
-          <button>изменить</button>
+          <button
+            onClick={() => {
+              setToEdit();
+              updateTask(elem.id, editValue);
+            }}>
+            {toEdited ? 'обновить' : 'изменить'}
+          </button>
         </div>
       )}
     </li>

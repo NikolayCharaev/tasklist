@@ -12,9 +12,10 @@ interface ToDoStore {
   modalVisible: boolean;
   toEdited: boolean
   setModalVisible: () => void;
+  setToEdit : () => void;
   tasks: Task[];
   createTask: (title: string) => void;
-  updateTask?: (id: string, title: string) => void;
+  updateTask: (id: string, title: string) => void;
   removeTask: (id: string) => void;
 }
 
@@ -24,6 +25,7 @@ export const useTodoStore = create<ToDoStore>(
     toEdited: false,
     tasks: [],
     setModalVisible: () => set((state) => ({ modalVisible: !state.modalVisible })),
+    setToEdit: () => set((state) => ({ toEdited: !state.toEdited })),
     createTask: (title: string) => {
       const { tasks } = get();
       const newTask = {
@@ -42,19 +44,16 @@ export const useTodoStore = create<ToDoStore>(
       });
     },
     updateTask: (id: string, title: string) => {
-      const { tasks, toEdited } = get();
+      const { tasks } = get();
      
       set({
-        toEdited: true,
         tasks: tasks.map((task) => ({
           ...task,
           title: task.id === id ? title : task.title,
         })),
       },
       );
-      set({
-        toEdited: false
-      })
+    
     },
   })),
 );
