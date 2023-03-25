@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
 import styles from './index.module.scss';
+import dayjs from 'dayjs';
 
 import { FaEllipsisV } from 'react-icons/fa';
 import { useTodoStore } from '../../../store/store';
@@ -14,11 +15,15 @@ interface TaskItemProps {
 }
 
 const TaskItem: FC<TaskItemProps> = ({ elem }) => {
+  const date = dayjs(elem.createdAt)
+  const formatDate = date.locale('ru').format('DD.MM.YY HH:mm')
     const {removeTask} = useTodoStore()
   const [buttonsVisible, setButtonsVisible] = useState(false);
   return (
     <li className={styles.todo}>
+      <span className={styles.todoDate}>{formatDate}</span>
       <p className={styles.todoTitle}>{elem.title}</p>
+
       <FaEllipsisV
         className={styles.todoEllipsis}
         onClick={() => {
