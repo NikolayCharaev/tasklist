@@ -43,17 +43,19 @@ export const useTodoStore = create<ToDoStore>(
         tasks: tasks.filter((elem) => elem.id !== id),
       });
     },
-    updateTask: (id: string, title: string) => {
+    updateTask: (taskId: string, title: string) => {
       const { tasks } = get();
-     
-      set({
-        tasks: tasks.map((task) => ({
-          ...task,
-          title: task.id === id ? title : task.title,
-        })),
-      },
-      );
-    
+      const updatedTasks = tasks.map((task) => {
+        if (task.id === taskId) {
+          return {
+            ...task,
+            title: title,
+          };
+        } else {
+          return task;
+        }
+      });
+      set({ tasks: updatedTasks });
     },
   })),
 );

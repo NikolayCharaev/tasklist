@@ -26,6 +26,18 @@
 
     }
 
+    &UpdateInput{ 
+        padding: 7px 5px;
+        width: 100%;
+        margin-left: -10px;
+        margin-top: 20px;
+        background-color: rgb(240, 240, 233);
+        font-size: 17px;
+        border: none;
+        border-radius: 5px;
+        
+    }
+
     span{
         display: inline-block;
     }

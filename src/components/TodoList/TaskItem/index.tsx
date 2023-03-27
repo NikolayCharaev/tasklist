@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useRef, useEffect } from 'react';
 import styles from './index.module.scss';
 import dayjs from 'dayjs';
 
@@ -15,12 +15,20 @@ interface TaskItemProps {
 }
 
 const TaskItem: FC<TaskItemProps> = ({ elem }) => {
+  const ref = useRef<HTMLInputElement>(null);
   const date = dayjs(elem.createdAt);
   const formatDate = date.locale('ru').format('DD.MM.YY HH:mm');
   const { removeTask, toEdited, setToEdit, updateTask } = useTodoStore();
 
   const [buttonsVisible, setButtonsVisible] = useState(false);
   const [editValue, setEditValue] = useState(elem.title);
+
+  useEffect(() => {
+    if (toEdited) {
+      ref.current?.focus();
+    }
+  }, [toEdited]);
+
   return (
     <li className={styles.todo}>
       <div className={styles.todoTop}>
@@ -34,7 +42,9 @@ const TaskItem: FC<TaskItemProps> = ({ elem }) => {
       </div>
       {toEdited ? (
         <input
+          ref={ref}
           value={editValue}
+          className={styles.todoUpdateInput}
           onChange={(e) => {
             setEditValue(e.target.value);
           }}
@@ -52,7 +62,7 @@ const TaskItem: FC<TaskItemProps> = ({ elem }) => {
             удалить
           </button>
           <button
-            onClick={() => {
+            onClick={(e) => {
               setToEdit();
               updateTask(elem.id, editValue);
             }}>
