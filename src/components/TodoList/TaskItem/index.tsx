@@ -69,7 +69,7 @@ const TaskItem: FC<TaskItemProps> = ({ elem }) => {
               }
               updateTask(elem.id, editValue);
             }}>
-            {!editValue.length ? 'изменить' : 'обновить'}
+            изменить
           </button>
         </div>
       )}
