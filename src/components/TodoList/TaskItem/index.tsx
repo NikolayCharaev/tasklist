@@ -64,9 +64,12 @@ const TaskItem: FC<TaskItemProps> = ({ elem }) => {
           <button
             onClick={(e) => {
               setToEdit();
+              if (!editValue.length) {
+                return;
+              }
               updateTask(elem.id, editValue);
             }}>
-            {toEdited ? 'обновить' : 'изменить'}
+            {!editValue.length ? 'изменить' : 'обновить'}
           </button>
         </div>
       )}
