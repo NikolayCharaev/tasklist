@@ -5,6 +5,8 @@ import { AiOutlineClose } from 'react-icons/ai';
 
 import { useTodoStore } from '../../../store/store';
 
+import CategoriesModal from '../../Categories/CategoriesModal';
+
 const index: React.FC = () => {
   const { modalVisible, setModalVisible } = useTodoStore();
   const { createTask } = useTodoStore();
@@ -53,6 +55,7 @@ const index: React.FC = () => {
               }}>
               добавить
             </button>
+              <CategoriesModal/>
           </div>
         </section>
       )}
