@@ -23,7 +23,7 @@ const TaskItem: FC<TaskItemProps> = ({ elem }) => {
   const [buttonsVisible, setButtonsVisible] = useState(false);
   const [editValue, setEditValue] = useState(elem.title);
 
-  const [editTaskId, setEditTaskId] = useState<string>('');
+  const [editTaskId, setEditTaskId] = useState<string>(' ');
 
   useEffect(() => {
     if (toEdited) {
@@ -39,6 +39,9 @@ const TaskItem: FC<TaskItemProps> = ({ elem }) => {
           className={styles.todoEllipsis}
           onClick={() => {
             setButtonsVisible(!buttonsVisible);
+
+            setEditItemId(elem.id);
+            setEditTaskId(elem.id);
           }}
         />
       </div>
@@ -55,7 +58,7 @@ const TaskItem: FC<TaskItemProps> = ({ elem }) => {
         <p className={styles.todoTitle}>{elem.title}</p>
       )}
 
-      {buttonsVisible &&  (
+      {editItemId === editTaskId && (
         <div className={styles.todoButtons}>
           <button
             onClick={() => {
