@@ -18,10 +18,12 @@ const TaskItem: FC<TaskItemProps> = ({ elem }) => {
   const ref = useRef<HTMLInputElement>(null);
   const date = dayjs(elem.createdAt);
   const formatDate = date.locale('ru').format('DD.MM.YY HH:mm');
-  const { removeTask, toEdited, setToEdit, updateTask } = useTodoStore();
+  const { removeTask, toEdited, setToEdit, updateTask, editItemId, setEditItemId } = useTodoStore();
 
   const [buttonsVisible, setButtonsVisible] = useState(false);
   const [editValue, setEditValue] = useState(elem.title);
+
+  const [editTaskId, setEditTaskId] = useState<string>('');
 
   useEffect(() => {
     if (toEdited) {
@@ -40,7 +42,7 @@ const TaskItem: FC<TaskItemProps> = ({ elem }) => {
           }}
         />
       </div>
-      {toEdited ? (
+      {toEdited && editItemId === editTaskId ? (
         <input
           ref={ref}
           value={editValue}
@@ -53,7 +55,7 @@ const TaskItem: FC<TaskItemProps> = ({ elem }) => {
         <p className={styles.todoTitle}>{elem.title}</p>
       )}
 
-      {buttonsVisible && (
+      {buttonsVisible &&  (
         <div className={styles.todoButtons}>
           <button
             onClick={() => {
@@ -63,6 +65,8 @@ const TaskItem: FC<TaskItemProps> = ({ elem }) => {
           </button>
           <button
             onClick={(e) => {
+              setEditItemId(elem.id);
+              setEditTaskId(elem.id);
               setToEdit();
               if (!editValue.length) {
                 return;

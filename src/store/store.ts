@@ -11,6 +11,12 @@ interface Task {
 interface ToDoStore {
   modalVisible: boolean;
   toEdited: boolean;
+
+  editItemId : string;
+  // setEditItemId : (id : string) => void;
+  setEditItemId : (id : string) => void;
+
+
   setModalVisible: () => void;
   setToEdit: () => void;
   tasks: Task[];
@@ -42,8 +48,15 @@ const currentState = JSON.parse(window.localStorage.getItem('tasks') || '[]');
 export const useTodoStore = create<ToDoStore>(localStorageUpdate(
   devtools((set, get) => ({
     modalVisible: false,
+    editItemId : '',
     toEdited: false,
     tasks: currentState,
+
+    setEditItemId(id) {
+      set(state => ({...state, editItemId: id}));
+    },
+
+
     setModalVisible: () => set((state) => ({ modalVisible: !state.modalVisible })),
     setToEdit: () => {
       set((state) => ({ toEdited: !state.toEdited }));
