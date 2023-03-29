@@ -12,10 +12,8 @@ interface ToDoStore {
   modalVisible: boolean;
   toEdited: boolean;
 
-  editItemId : string;
-  // setEditItemId : (id : string) => void;
-  setEditItemId : (id : string) => void;
-
+  editItemId: string;
+  setEditItemId: (id: string) => void;
 
   setModalVisible: () => void;
   setToEdit: () => void;
@@ -45,52 +43,53 @@ const localStorageUpdate =
 
 const currentState = JSON.parse(window.localStorage.getItem('tasks') || '[]');
 
-export const useTodoStore = create<ToDoStore>(localStorageUpdate(
-  devtools((set, get) => ({
-    modalVisible: false,
-    editItemId : '',
-    toEdited: false,
-    tasks: currentState,
+export const useTodoStore = create<ToDoStore>(
+  localStorageUpdate(
+    devtools((set, get) => ({
+      modalVisible: false,
+      editItemId: '',
+      toEdited: false,
+      tasks: currentState,
 
-    setEditItemId(id) {
-      set(state => ({...state, editItemId: id}));
-    },
+      setEditItemId(id) {
+        set((state) => ({ ...state, editItemId: id }));
+      },
 
-
-    setModalVisible: () => set((state) => ({ modalVisible: !state.modalVisible })),
-    setToEdit: () => {
-      set((state) => ({ toEdited: !state.toEdited }));
-    },
-    createTask: (title: string) => {
-      const { tasks } = get();
-      const newTask = {
-        id: generateId(),
-        title: title,
-        createdAt: Date.now(),
-      };
-      set({
-        tasks: [newTask, ...tasks],
-      });
-    },
-    removeTask: (id: string) => {
-      const { tasks } = get();
-      set({
-        tasks: tasks.filter((elem) => elem.id !== id),
-      });
-    },
-    updateTask: (taskId: string, title: string) => {
-      const { tasks } = get();
-      const updatedTasks = tasks.map((task) => {
-        if (task.id === taskId) {
-          return {
-            ...task,
-            title: title,
-          };
-        } else {
-          return task;
-        }
-      });
-      set({ tasks: updatedTasks });
-    },
-  }))),
+      setModalVisible: () => set((state) => ({ modalVisible: !state.modalVisible })),
+      setToEdit: () => {
+        set((state) => ({ toEdited: !state.toEdited }));
+      },
+      createTask: (title: string) => {
+        const { tasks } = get();
+        const newTask = {
+          id: generateId(),
+          title: title,
+          createdAt: Date.now(),
+        };
+        set({
+          tasks: [newTask, ...tasks],
+        });
+      },
+      removeTask: (id: string) => {
+        const { tasks } = get();
+        set({
+          tasks: tasks.filter((elem) => elem.id !== id),
+        });
+      },
+      updateTask: (taskId: string, title: string) => {
+        const { tasks } = get();
+        const updatedTasks = tasks.map((task) => {
+          if (task.id === taskId) {
+            return {
+              ...task,
+              title: title,
+            };
+          } else {
+            return task;
+          }
+        });
+        set({ tasks: updatedTasks });
+      },
+    })),
+  ),
 );

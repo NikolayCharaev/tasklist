@@ -1,32 +1,42 @@
 import React, { useRef, useState, useEffect } from 'react';
-
 import styles from './index.module.scss';
-
 import { categoriesItems } from '../data';
 
 const CategoriesModal = () => {
+  const [activeCategory, setActiveCategory] = useState('');
+  const [categories, setCategories] = useState(
+    categoriesItems.map((item) => ({ ...item, isActive: false })),
+  );
+
+  useEffect(() => {
+    console.log(categories);
+  }, [activeCategory]);
+
+  const handleButtonClick = (category: string) => {
+    setActiveCategory(category);
+  };
+
   return (
     <div className={styles.Ellipsis}>
       <p>Выберите категорию дела</p>
       <div className={styles.EllipsisCategories}>
-        {categoriesItems.map((elem) => {
-          const ref = useRef<HTMLButtonElement>(null);
-          function handleButtonClick() {
-            if (ref.current) {
-           ref.current.style.opacity = '1' 
-            }
-          }
-          console.log(ref);
-          return (
-            <button
-              ref={ref}
-              className={`${styles[elem.ellipseColor]}`}
-              onClick={() => {
-                handleButtonClick();
-                console.log(elem.categories)
-              }}></button>
-          );
-        })}
+        {categories.map((elem) => (
+          
+          <button
+          style={{ opacity: elem.isActive ? 1 : '' }}
+            key={elem.id}
+            className={`${styles[elem.ellipseColor]} ${elem.isActive ? styles.active : ''}`}
+            onClick={() => {
+      
+              setActiveCategory(elem.ellipseColor);
+              setCategories(
+                categories.map((item) => ({
+                  ...item,
+                  isActive: item.id === elem.id ? true : false,
+                })),
+              );
+            }}></button>
+        ))}
       </div>
     </div>
   );

@@ -12,6 +12,7 @@ const index: React.FC = () => {
   const { createTask } = useTodoStore();
   const [value, setValue] = useState('');
 
+
   function addTodoHandler(value: string) {
     createTask(value);
     setValue('');
@@ -19,6 +20,7 @@ const index: React.FC = () => {
   }
   const inputRef = useRef<HTMLInputElement>(null);
 
+  
   useEffect(() => {
     if (modalVisible) {
       inputRef.current?.focus();
@@ -31,7 +33,10 @@ const index: React.FC = () => {
           <div className={styles.todoModalBackground}></div>
           <div className={styles.todoModalTop}>
             <h4 className={styles.todoModalTitle}>Добавить новое дело</h4>
-            <AiOutlineClose className={styles.todoModalClose} onClick={setModalVisible} />
+            <AiOutlineClose className={styles.todoModalClose} onClick={() => { 
+              setModalVisible()
+              setValue('')
+            }} />
           </div>
           <div className={styles.todoModalForm}>
             <input
