@@ -8,14 +8,6 @@ const CategoriesModal = () => {
     categoriesItems.map((item) => ({ ...item, isActive: false })),
   );
 
-  useEffect(() => {
-    console.log(categories);
-  }, [activeCategory]);
-
-  const handleButtonClick = (category: string) => {
-    setActiveCategory(category);
-  };
-
   return (
     <div className={styles.Ellipsis}>
       <p>Выберите категорию дела</p>
