@@ -23,6 +23,8 @@ const TaskItem: FC<TaskItemProps> = ({ elem }) => {
   const [buttonsVisible, setButtonsVisible] = useState(false);
   const [editValue, setEditValue] = useState(elem.title);
 
+  const [taskBg, setTaskBg] = useState('');
+
   const [editTaskId, setEditTaskId] = useState<string>(' ');
 
   useEffect(() => {
@@ -31,8 +33,21 @@ const TaskItem: FC<TaskItemProps> = ({ elem }) => {
     }
   }, [toEdited]);
 
+  useEffect(() => {
+    if (elem.color === 'work') {
+      setTaskBg('#ccffee');
+    } else if (elem.color === 'studies') {
+      setTaskBg('#1a008058');
+    } else if (elem.color === 'shop') {
+      setTaskBg('#d8709375');
+    } else if (elem.color === 'sport') {
+      setTaskBg('#8a2be36b');
+    }
+    console.log(taskBg);
+  }, []);
+
   return (
-    <li className={styles.todo}>
+    <li className={styles.todo} style={{ backgroundColor: taskBg }}>
       <div className={styles.todoTop}>
         <span className={styles.todoDate}>{formatDate}</span>
         <FaEllipsisV

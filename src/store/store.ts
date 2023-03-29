@@ -6,19 +6,21 @@ interface Task {
   id: string;
   title: string;
   createdAt: number;
+  color: string; 
 }
 
 interface ToDoStore {
   modalVisible: boolean;
   toEdited: boolean;
-
+  taskColor : string;
   editItemId: string;
   setEditItemId: (id: string) => void;
 
   setModalVisible: () => void;
   setToEdit: () => void;
+  setTaskColor :(color : string) => void 
   tasks: Task[];
-  createTask: (title: string) => void;
+  createTask: (title: string, color: string) => void;
   updateTask: (id: string, title: string) => void;
   removeTask: (id: string) => void;
 }
@@ -49,22 +51,28 @@ export const useTodoStore = create<ToDoStore>(
       modalVisible: false,
       editItemId: '',
       toEdited: false,
+      
+      taskColor: '',
       tasks: currentState,
 
       setEditItemId(id) {
         set((state) => ({ ...state, editItemId: id }));
       },
 
+      setTaskColor(color) { 
+        set((state) => ({ taskColor: color}));
+      },
       setModalVisible: () => set((state) => ({ modalVisible: !state.modalVisible })),
       setToEdit: () => {
         set((state) => ({ toEdited: !state.toEdited }));
       },
-      createTask: (title: string) => {
+      createTask: (title, color) => {
         const { tasks } = get();
         const newTask = {
           id: generateId(),
           title: title,
           createdAt: Date.now(),
+          color: color
         };
         set({
           tasks: [newTask, ...tasks],

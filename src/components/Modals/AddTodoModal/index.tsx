@@ -8,13 +8,13 @@ import { useTodoStore } from '../../../store/store';
 import CategoriesModal from '../../Categories/CategoriesModal';
 
 const index: React.FC = () => {
-  const { modalVisible, setModalVisible } = useTodoStore();
+  const { modalVisible, setModalVisible , taskColor} = useTodoStore();
   const { createTask } = useTodoStore();
   const [value, setValue] = useState('');
 
 
   function addTodoHandler(value: string) {
-    createTask(value);
+    createTask(value, taskColor);
     setValue('');
     setModalVisible();
   }
@@ -60,7 +60,7 @@ const index: React.FC = () => {
               }}>
               добавить
             </button>
-              <CategoriesModal/>
+              <CategoriesModal />
           </div>
         </section>
       )}
