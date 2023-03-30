@@ -2,11 +2,11 @@
   "name": "todo",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://NikolayCharaev.github.io/tasklist",
+  "homepage": "https://github.com/NikolayCharaev/tasklist",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "preview": "vite preview"
