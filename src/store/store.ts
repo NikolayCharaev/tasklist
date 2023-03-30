@@ -51,7 +51,7 @@ export const useTodoStore = create<ToDoStore>(
       modalVisible: false,
       editItemId: '',
       toEdited: false,
-      
+      color: '',
       taskColor: '',
       tasks: currentState,
 
