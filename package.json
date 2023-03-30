@@ -2,7 +2,7 @@
   "name": "todo",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://NikolayCharaev.github.io/tasklist.git",
+  "homepage": "https://NikolayCharaev.github.io/tasklist",
   "type": "module",
   "scripts": {
     "dev": "vite",
