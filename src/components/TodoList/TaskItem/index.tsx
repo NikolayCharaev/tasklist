@@ -45,6 +45,9 @@ const TaskItem: FC<TaskItemProps> = ({ elem }) => {
     } else if (elem.color === 'sport') {
       setTaskBg('#8a2be36b');
     }
+    else {
+      setTaskBg('#124E78');
+    }
   }, []);
 
   return (
