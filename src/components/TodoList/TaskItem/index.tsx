@@ -8,6 +8,7 @@ interface Task {
   id: string;
   title: string;
   createdAt: number;
+  color: string;
 }
 
 interface TaskItemProps {
@@ -18,6 +19,7 @@ const TaskItem: FC<TaskItemProps> = ({ elem }) => {
   const ref = useRef<HTMLInputElement>(null);
   const date = dayjs(elem.createdAt);
   const formatDate = date.locale('ru').format('DD.MM.YY HH:mm');
+
   const { removeTask, toEdited, setToEdit, updateTask, editItemId, setEditItemId } = useTodoStore();
 
   const [buttonsVisible, setButtonsVisible] = useState(false);
