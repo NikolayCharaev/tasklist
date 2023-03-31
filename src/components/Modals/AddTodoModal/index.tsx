@@ -9,7 +9,7 @@ import CategoriesModal from '../../Categories/CategoriesModal';
 
 const index: React.FC = () => {
   const { modalVisible, setModalVisible , taskColor} = useTodoStore();
-  const { createTask } = useTodoStore();
+  const { createTask,setResetColorTask } = useTodoStore();
   const [value, setValue] = useState('');
 
 
@@ -57,6 +57,7 @@ const index: React.FC = () => {
               className={styles.todoModalButton}
               onClick={() => {
                 addTodoHandler(value);
+                setResetColorTask()
               }}>
               добавить
             </button>

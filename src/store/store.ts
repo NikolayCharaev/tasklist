@@ -19,6 +19,7 @@ interface ToDoStore {
   setModalVisible: () => void;
   setToEdit: () => void;
   setTaskColor :(color : string) => void 
+  setResetColorTask : () => void
   tasks: Task[];
   createTask: (title: string, color: string) => void;
   updateTask: (id: string, title: string) => void;
@@ -61,6 +62,10 @@ export const useTodoStore = create<ToDoStore>(
 
       setTaskColor(color) { 
         set((state) => ({ taskColor: color}));
+      },
+
+      setResetColorTask() {
+        set(state => ({taskColor : ''}) )
       },
       setModalVisible: () => set((state) => ({ modalVisible: !state.modalVisible })),
       setToEdit: () => {
