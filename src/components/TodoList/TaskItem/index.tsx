@@ -58,7 +58,6 @@ const TaskItem: FC<TaskItemProps> = ({ elem }) => {
           className={styles.todoEllipsis}
           onClick={() => {
             setButtonsVisible(!buttonsVisible);
-
             setEditItemId(elem.id);
             setEditTaskId(elem.id);
           }}
@@ -77,7 +76,7 @@ const TaskItem: FC<TaskItemProps> = ({ elem }) => {
         <p className={styles.todoTitle}>{elem.title}</p>
       )}
 
-      {editItemId === editTaskId && (
+      {editItemId === editTaskId && buttonsVisible && (
         <div className={styles.todoButtons}>
           <button
             onClick={() => {
