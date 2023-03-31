@@ -1,86 +1,75 @@
+.todo {
+  height: 150px;
+  border-radius: 10px;
+  position: relative;
+  transition: all 0.2s ease;
+  padding: 20px;
+  cursor: pointer;
 
+  min-width: 25%;
 
+  @media screen and (max-width: 700px) {
+  }
 
+  &:hover {
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.11);
+  }
 
-.todo{ 
-    width: 300px;
-    height: 150px;
-    // background-color: #fff9de;
-    border-radius: 10px;
-    position: relative;
-    transition: all .2s ease;
-    padding: 20px;
-    cursor: pointer;
+  &Top {
+    margin-bottom: 40px;
+  }
 
-    &:hover{ 
-        box-shadow: 2px 2px 8px rgba(0, 0, 0, .11);
+  &Title {
+    width: 100%;
+  }
+
+  &UpdateInput {
+    padding: 7px 5px;
+    width: 100%;
+    margin-left: -10px;
+    margin-top: 20px;
+    background-color: rgb(240, 240, 233);
+    font-size: 17px;
+    border: none;
+    border-radius: 5px;
+  }
+
+  span {
+    display: inline-block;
+  }
+
+  &Ellipsis {
+    color: grey;
+    float: right;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: black;
     }
+  }
 
-    &Top{ 
-        margin-bottom: 40px;
+  &Buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: 100px;
+
+    position: absolute;
+    top: 20px;
+    right: 40px;
+
+    button {
+      background: rgb(0, 229, 255);
+      color: black;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      transition: background 0.2s ease;
+
+      &:hover {
+        background: rgb(88, 151, 158);
+        color: #fff;
+      }
     }
-
-
-    &Title { 
-        width: 100%; 
-
-    }
-
-    &UpdateInput{ 
-        padding: 7px 5px;
-        width: 100%;
-        margin-left: -10px;
-        margin-top: 20px;
-        background-color: rgb(240, 240, 233);
-        font-size: 17px;
-        border: none;
-        border-radius: 5px;
-        
-    }
-
-    span{
-        display: inline-block;
-    }
-
-    &Ellipsis { 
-        color: grey;
-        float: right;
-        // margin: 10px 10px 0 0;
-        transition: all .2s ease;
-
-
-        &:hover { 
-            color: black;
-        }
-    }
-
-    &Buttons{ 
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-        max-width: 100px;
-        // float: right;
-
-        position: absolute;
-        top: 20px;
-        right: 40px;
-
-
-
-        button { 
-            background: rgb(0, 229, 255);
-            color: black;            
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background .2s ease;
-
-            &:hover{ 
-                background: rgb(88, 151, 158); 
-                color: #fff;
-            }
-
-        }
-    }
-
+  }
 }

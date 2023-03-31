@@ -2,6 +2,9 @@
   margin-bottom: 70px;
   width: 15%;
   margin-right: 40px;
+  min-width: 150px;
+
+
   &Item {
     display: flex;
     align-items: center;
@@ -23,6 +26,11 @@
     opacity: 0.4;
     border-radius: 50%;
     transition: all 0.2s ease;
+
+    @media screen and (max-width: 550px) {
+      width: 40px;
+      height: 40px;
+    }
   }
 
   .work {
@@ -39,6 +47,13 @@
   .sport {
     background-color: blueviolet;
   }
+
+
+  // &List { 
+  //   display: flex;
+  //   gap: 20px;
+  // }
+
 
   &Cat {
     position: absolute;

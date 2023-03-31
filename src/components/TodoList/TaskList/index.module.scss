@@ -1,24 +1,32 @@
 .todo{ 
+
+
     &List { 
        display: grid;
        grid-template-columns: repeat(4, 1fr);
        gap: 20px;
-        
+       overflow: scroll;
+       max-height: 600px;
+       padding-bottom: 25px;
+        width: 100%;
 
+        &::-webkit-scrollbar { 
+            display: none;
+        }
 
 
     @media screen and (max-width : 1900px) {
         grid-template-columns: repeat(3, 1fr);  
     }
 
-    @media screen and (max-width : 1500px) {
+    @media screen and (max-width : 840px) {
         grid-template-columns: repeat(2, 1fr);  
+
     }
 
-    @media screen and (max-width : 1033px) {
-        grid-template-columns: repeat(1, 1fr);  
+    @media screen and (max-width : 700px) {
+        grid-template-columns: repeat(1, 1fr); 
+      
     }
     }
-
-
 }
