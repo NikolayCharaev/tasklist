@@ -62,5 +62,13 @@
     z-index: 1000;
     width: 300px;
     height: 300px;
+
+
+
+
+    @media screen and (max-width: 450px){
+      width: 200px;
+      height: 200px;
+    }
   }
 }
